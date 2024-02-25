@@ -1,0 +1,8 @@
+### Regular price
+GET http://localhost:8080/room/1/offer?guestName=Some%20Guest&startTime=2024-02-28T14:00:00&endTime=2024-03-03T12:00:00
+
+### Gold price
+GET http://localhost:8080/room/1/offer?guestName=John%20Doe&startTime=2024-02-28T14:00:00&endTime=2024-03-03T12:00:00
+
+### Platinum price
+GET http://localhost:8080/room/1/offer?guestName=Jane%20Doe&startTime=2024-02-28T14:00:00&endTime=2024-03-03T12:00:00

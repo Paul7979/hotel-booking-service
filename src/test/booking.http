@@ -1,0 +1,36 @@
+### This request results in a conflict
+POST http://localhost:8080/booking
+Content-Type: application/json
+
+{
+  "roomId": 1,
+  "startTime": "2024-02-28T14:00:00",
+  "endTime": "2024-03-03T12:00:00",
+  "guestName": "John Doe",
+  "paymentId": "123e4567-e89b-12d3-a456-426614174000"
+}
+### Booking successful
+
+POST http://localhost:8080/booking
+Content-Type: application/json
+
+{
+"roomId": 1,
+"startTime": "2024-03-01T10:00:00",
+"endTime": "2024-03-01T15:00:00",
+"guestName": "Jane Smith",
+"paymentId": "123e4567-e89b-12d3-a456-426614174000"
+}
+
+### Payment failed
+POST http://localhost:8080/booking
+Content-Type: application/json
+
+{
+  "roomId": 1,
+  "startTime": "2024-11-01T10:00:00",
+  "endTime": "2024-11-12T15:00:00",
+  "guestName": "John Doe",
+  "paymentId": "00000000-0000-0000-0000-000000000000"
+}
+
