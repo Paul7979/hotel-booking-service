@@ -25,40 +25,10 @@ public class SampleDataInitializer {
 
     @PostConstruct
     public void run() {
-        // Create rooms
-        Room room1 = createRoom("Room 1", 2, "Wi-Fi, TV");
-        Room room2 = createRoom("Room 2", 4, "Wi-Fi, TV, Mini-bar");
-
-        // Create room prices
-        RoomPrice room1StandardPrice = createRoomPrice(room1, PriceType.STANDARD, 100);
-        RoomPrice room1GoldPrice = createRoomPrice(room1, PriceType.GOLD, 70);
-        RoomPrice room1PlatinumPrice = createRoomPrice(room1, PriceType.PLATINUM, 50);
-
-        RoomPrice room2StandardPrice = createRoomPrice(room2, PriceType.STANDARD, 200);
-        RoomPrice room2GoldPrice = createRoomPrice(room2, PriceType.GOLD, 150);
-        RoomPrice room2PlatinumPrice = createRoomPrice(room2, PriceType.PLATINUM, 100);
-
         // Create bookings
         createBooking(room1, LocalDateTime.of(2024, 2, 28, 14, 0), LocalDateTime.of(2024, 3, 3, 12, 0), "John Doe", "FINISHED");
         createBooking(room2, LocalDateTime.of(2024, 3, 5, 15, 0), LocalDateTime.of(2024, 3, 10, 10, 0), "Alice Smith", "FINISHED");
     }
-
-    private Room createRoom(String name, int capacity, String amenities) {
-        Room room = new Room();
-        room.setName(name);
-        room.setCapacity(capacity);
-        room.setAmenities(amenities);
-        return roomRepository.save(room);
-    }
-
-    private RoomPrice createRoomPrice(Room room, PriceType type, int price) {
-        RoomPrice roomPrice = new RoomPrice();
-        roomPrice.setRoom(room);
-        roomPrice.setType(type);
-        roomPrice.setPrice(price);
-        return roomPriceRepository.save(roomPrice);
-    }
-
     private Booking createBooking(Room room, LocalDateTime startTime, LocalDateTime endTime, String guestName, String paymentStatus) {
         Booking booking = new Booking();
         booking.setRoom(room);
