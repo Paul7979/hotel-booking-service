@@ -1,9 +1,9 @@
-package at.technikum.hotelbookingservice.booking.service;
+package adp.resilience.booking.service;
 
-import at.technikum.hotelbookingservice.booking.model.Booking;
-import at.technikum.hotelbookingservice.booking.model.BookingDTO;
+
+import adp.resilience.booking.service.controller.model.request.BookRoomRequestModel;
 
 public interface BookingHandler {
-    void handleBooking(BookingDTO booking);
+    void handleBooking(BookRoomRequestModel booking);
     void setNextHandler(BookingHandler nextHandler);
 }

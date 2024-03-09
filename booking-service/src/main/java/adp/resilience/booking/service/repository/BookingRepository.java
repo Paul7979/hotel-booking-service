@@ -1,8 +1,8 @@
-package at.technikum.hotelbookingservice.booking;
+package adp.resilience.booking.service.repository;
 
-import at.technikum.hotelbookingservice.booking.model.Booking;
-import at.technikum.hotelbookingservice.room.model.Room;
+import adp.resilience.booking.service.model.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.time.LocalDateTime;
 import java.util.List;
 

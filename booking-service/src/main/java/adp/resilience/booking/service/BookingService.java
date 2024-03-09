@@ -1,9 +1,7 @@
-package at.technikum.hotelbookingservice.booking.service;
+package adp.resilience.booking.service;
 
-import at.technikum.hotelbookingservice.booking.BookingRepository;
-import at.technikum.hotelbookingservice.booking.model.Booking;
-import at.technikum.hotelbookingservice.booking.model.BookingDTO;
-import at.technikum.hotelbookingservice.room.RoomRepository;
+import adp.resilience.booking.service.controller.model.request.BookRoomRequestModel;
+import adp.resilience.booking.service.repository.BookingRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -33,7 +31,7 @@ public class BookingService {
     }
 
     @Transactional
-    public void bookRoom(BookingDTO booking) {
+    public void bookRoom(BookRoomRequestModel booking) {
         availabilityService.handleBooking(booking);
     }
 

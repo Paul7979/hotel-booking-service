@@ -1,4 +1,4 @@
-package adp.resilience.booking.service.usecase;
+package adp.resilience.booking.service.business.usecase;
 
 import adp.resilience.booking.service.chain.BookRoomChain;
 import lombok.RequiredArgsConstructor;

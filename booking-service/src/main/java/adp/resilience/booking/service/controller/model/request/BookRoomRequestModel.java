@@ -1,4 +1,4 @@
-package adp.resilience.booking.service.model;
+package adp.resilience.booking.service.controller.model.request;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

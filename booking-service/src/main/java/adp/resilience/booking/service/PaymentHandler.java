@@ -1,6 +1,6 @@
-package at.technikum.hotelbookingservice.booking.service;
+package adp.resilience.booking.service;
 
-import at.technikum.hotelbookingservice.booking.model.BookingDTO;
+import adp.resilience.booking.service.controller.model.request.BookRoomRequestModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
@@ -11,7 +11,7 @@ public class PaymentHandler implements BookingHandler {
   private final PaymentService paymentService;
 
   @Override
-  public void handleBooking(BookingDTO booking) {
+  public void handleBooking(BookRoomRequestModel booking) {
     var paymentStatus = paymentService.getPaymentStatus(booking.paymentId());
 
     switch (paymentStatus) {

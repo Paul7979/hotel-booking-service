@@ -1,7 +1,7 @@
-package adp.resilience.booking.service;
+package adp.resilience.booking.service.chain;
 
-import adp.resilience.booking.service.model.BookingDTO;
+import adp.resilience.booking.service.controller.model.request.BookRoomRequestModel;
 
 public interface BookRoomChain {
-    void bookRoom(BookingDTO booking);
+    void bookRoom(BookRoomRequestModel booking);
 }

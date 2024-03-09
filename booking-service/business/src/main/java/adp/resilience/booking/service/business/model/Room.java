@@ -1,4 +1,4 @@
-package adp.resilience.booking.service.model;
+package adp.resilience.booking.service.business.model;
 
 import java.util.ArrayList;
 import java.util.List;

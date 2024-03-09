@@ -1,4 +1,4 @@
-package adp.resilience.booking.service.model;
+package adp.resilience.booking.service.business.model;
 
 import lombok.Builder;
 import lombok.Getter;
