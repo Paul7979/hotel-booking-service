@@ -12,5 +12,6 @@
         <module>gateway</module>
         <module>booking-service</module>
         <module>room-service</module>
+        <module>common</module>
     </modules>
 </project>

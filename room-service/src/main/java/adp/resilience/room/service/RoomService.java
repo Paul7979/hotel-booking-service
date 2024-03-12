@@ -1,12 +1,13 @@
 package adp.resilience.room.service;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import adp.resilience.room.service.model.RoomDto;
+@SpringBootApplication
+public class RoomService {
 
-import java.util.List;
+	public static void main(String[] args) {
+		SpringApplication.run(RoomService.class, args);
+	}
 
-public interface RoomService {
-  List<RoomDto> getRooms();
-
-  RoomDto getRoomDetails(Long roomId);
 }

@@ -1,17 +1,18 @@
 package adp.resilience.booking.service.business.usecase;
 
-import adp.resilience.booking.service.chain.BookRoomChain;
+import adp.resilience.common.model.Booking;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class BookRoomUseCase implements BookRoomInPort{
-    private final BookRoomChain bookRoomChain;
+public class BookRoomUseCase implements BookRoomInPort {
+
+    private final BookRoomChain bookingChain;
 
     @Override
     public BookRoomResponse bookRoom(BookRoomRequest request) {
-
-        return null;
+        Booking booking = bookingChain.bookRoom(request);
+        return new BookRoomResponse(booking);
     }
 }
