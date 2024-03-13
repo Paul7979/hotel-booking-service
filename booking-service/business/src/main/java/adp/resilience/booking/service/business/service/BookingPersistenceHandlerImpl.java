@@ -5,8 +5,10 @@ import adp.resilience.booking.service.business.usecase.BookingHandler;
 import adp.resilience.booking.service.business.usecase.out.BookingOutPort;
 import adp.resilience.common.model.Booking;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
+@Component
 public class BookingPersistenceHandlerImpl implements BookingPersistenceHandler {
 
     private final BookingOutPort bookingRepository;
