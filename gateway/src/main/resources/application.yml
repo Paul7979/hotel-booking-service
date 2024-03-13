@@ -1,0 +1,65 @@
+server:
+  port: 8082
+
+
+management.metrics.tags.application: ${spring.application.name}
+management.metrics.distribution.percentiles-histogram.http.server.requests: true
+management.metrics.distribution.percentiles-histogram.resilience4j.circuitbreaker.calls: true
+management.endpoints.web.exposure.include: "*"
+management.endpoint.health.show-details: always
+
+management.health.diskspace.enabled: false
+management.health.circuitbreakers.enabled: true
+management.health.ratelimiters.enabled: false
+#resilience4j.circuitbreaker.metrics.use_legacy_binder: true
+
+resilience4j.circuitbreaker:
+  instances:
+    rooms:
+      registerHealthIndicator: true
+      slidingWindowType: TIME_BASED
+      minimumNumberOfCalls: 20
+      waitDurationInOpenState: 50s
+      recordExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - java.util.concurrent.TimeoutException
+        - java.io.IOException
+      slidingWindowSize: 100
+      permittedNumberOfCallsInHalfOpenState: 30
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+resilience4j.retry:
+  instances:
+    rooms:
+      maxAttempts: 3
+      waitDuration: 10s
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+      retryExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - java.io.IOException
+resilience4j.bulkhead:
+  instances:
+    rooms:
+      maxConcurrentCalls: 10
+      maxWaitDuration: 10ms
+resilience4j.thread-pool-bulkhead:
+  instances:
+    backendC:
+      maxThreadPoolSize: 1
+      coreThreadPoolSize: 1
+      queueCapacity: 1
+      writableStackTraceEnabled: true
+resilience4j.ratelimiter:
+  instances:
+    rooms:
+      limitForPeriod: 10
+      limitRefreshPeriod: 1s
+      timeoutDuration: 0
+      registerHealthIndicator: true
+      eventConsumerBufferSize: 100
+resilience4j.timelimiter:
+  instances:
+    rooms:
+      timeoutDuration: 2s
+      cancelRunningFuture: true
