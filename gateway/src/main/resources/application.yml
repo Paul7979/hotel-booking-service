@@ -1,6 +1,5 @@
 server:
-  port: 8082
-
+  port: 8083
 
 management.metrics.tags.application: ${spring.application.name}
 management.metrics.distribution.percentiles-histogram.http.server.requests: true
