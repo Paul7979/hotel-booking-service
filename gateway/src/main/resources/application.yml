@@ -13,8 +13,8 @@ management.health.ratelimiters.enabled: false
 #resilience4j.circuitbreaker.metrics.use_legacy_binder: true
 
 resilience4j.circuitbreaker:
-  instances:
-    rooms:
+  configs:
+    default:
       registerHealthIndicator: true
       slidingWindowType: TIME_BASED
       minimumNumberOfCalls: 20
@@ -25,40 +25,76 @@ resilience4j.circuitbreaker:
         - java.io.IOException
       slidingWindowSize: 100
       permittedNumberOfCallsInHalfOpenState: 30
-      failureRateThreshold: 50
+      failureRateThreshold: 30
       eventConsumerBufferSize: 10
-resilience4j.retry:
   instances:
     rooms:
+      baseConfig: default
+    singleRoom:
+      baseConfig: default
+
+resilience4j.retry:
+  configs:
+    default:
       maxAttempts: 3
-      waitDuration: 10s
+      waitDuration: 3s
       enableExponentialBackoff: true
       exponentialBackoffMultiplier: 2
       retryExceptions:
         - org.springframework.web.client.HttpServerErrorException
         - java.io.IOException
-resilience4j.bulkhead:
   instances:
     rooms:
+      baseConfig: default
+    singleRoom:
+      baseConfig: default
+      ignoreExceptions:
+        - org.springframework.web.server.ResponseStatusException
+
+resilience4j.bulkhead:
+  configs:
+    default:
       maxConcurrentCalls: 10
       maxWaitDuration: 10ms
-resilience4j.thread-pool-bulkhead:
   instances:
-    backendC:
+    rooms:
+      baseConfig: default
+    singleRoom:
+      baseConfig: default
+
+resilience4j.thread-pool-bulkhead:
+  configs:
+    default:
       maxThreadPoolSize: 1
       coreThreadPoolSize: 1
       queueCapacity: 1
       writableStackTraceEnabled: true
-resilience4j.ratelimiter:
   instances:
     rooms:
+      baseConfig: default
+    singleRoom:
+      baseConfig: default
+
+resilience4j.ratelimiter:
+  configs:
+    default:
       limitForPeriod: 10
       limitRefreshPeriod: 1s
       timeoutDuration: 0
       registerHealthIndicator: true
       eventConsumerBufferSize: 100
-resilience4j.timelimiter:
   instances:
     rooms:
-      timeoutDuration: 2s
-      cancelRunningFuture: true
+      baseConfig: default
+    singleRoom:
+      baseConfig: default
+# resilience4j.timelimiter:
+#   configs:
+#     default:
+#       timeoutDuration: 2s
+#       cancelRunningFuture: true
+#   instances:
+#     rooms:
+#       baseConfig: default
+#     singleRoom:
+#       baseConfig: default
