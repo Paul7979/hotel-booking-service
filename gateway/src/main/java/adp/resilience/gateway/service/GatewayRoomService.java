@@ -1,4 +1,4 @@
-package adp.resilience.gateway.service.web.adapter.service;
+package adp.resilience.gateway.service;
 
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
